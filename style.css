@@ -11,6 +11,7 @@ body {
   filter: blur(3px);
   overflow: hidden;
 } */
+/* ! HEADER STYLES ---------------------------------- */
 .header {
   display: flex;
   align-items: center;
@@ -63,6 +64,7 @@ body {
   font-weight: lighter;
   font-size: .75rem;
 }
+/* ! DAY CARDS STYLES ---------------------------------- */
 .day-section {
   /* display: flex;
   gap: 10px;
@@ -88,3 +90,35 @@ body {
   color: hsl(200, 100%, 20%);
   margin-top: 0.5rem;
 }
+
+/* ! TABLE STYLES ---------------------------------- */
+.hour-section {
+  width: 100%;
+  text-align: center;
+  border-spacing: 0px;
+}
+.hour-row {
+  background-color: hsl(200, 60%, 75%);
+}
+.hour-row:nth-child(2n) {
+  background-color: hsl(200, 60%, 60%);
+}
+.hour-row > td {
+  padding: 0.25rem 0.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ! TABLE STYLES ---------------------------------- */
