@@ -1,3 +1,4 @@
+import { ICON_MAP } from "./iconMap";
 import "./style.css"
 import {getWeather} from "./weather";
 
@@ -22,10 +23,19 @@ function setValue(selector, value, {parent = document} = {}) {
   parent.querySelector(`[data-${selector}]`).textContent = value;
 }
 
- function renderCurrentWeather(current) {
+//api'de ki icon kodu fonksiyona geçilerek, kendi ikonlarımızın dosya yoluna uygun bir url oluşturuluyor.
+function getIconUrl(iconCode) {
+  return `icons/${ICON_MAP.get(iconCode)}.svg`
+}
+
+//header' daki icon' u seçiyoruz ve aşağıdaki fonk. içinde bu ögenin src değerini atıyoruz.
+const currentIcon = document.querySelector('[data-current-icon]')
+
+function renderCurrentWeather(current) {
   // document.querySelector("[data-current-temp]").textContent = current.currentTemp;
   // tek tek bunu yazmak yerine setValue fonk. kullaniyoruz
 
+  currentIcon.src = getIconUrl(current.iconCode)
   setValue('current-temp', current.currentTemp)
   setValue('current-high', current.highTemp)
   setValue('current-low', current.lowTemp)
@@ -33,7 +43,7 @@ function setValue(selector, value, {parent = document} = {}) {
   setValue('current-fl-low', current.lowFeelsLike)
   setValue('current-wind', current.windSpeed)
   setValue('current-precip', current.precip)
- }
+}
 
 
 
