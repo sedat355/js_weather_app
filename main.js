@@ -4,12 +4,22 @@ import {getWeather} from "./weather";
 
 console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)//Europe/Istanbul
 
-getWeather(10,10,Intl.DateTimeFormat().resolvedOptions().timeZone)
-  .then(renderWeather)
-  .catch( e => {
-    console.error(e)
-    alert("Error getting weather.")
-  })
+//En son yapılan konum bildirme:
+navigator.geolocation.getCurrentPosition(positionSuccess, positionError)
+
+function positionSuccess({coords}) {
+  getWeather(coords.latitude, coords.longitude,Intl.DateTimeFormat().resolvedOptions().timeZone)
+    .then(renderWeather)
+    .catch( e => {
+      console.error(e)
+      alert("Error getting weather.")
+    })
+}
+
+function positionError() {
+  alert('There was an error gettin your location. Please allow us to use your location and refresh the page.')
+}
+
 
 function renderWeather({current, daily, hourly}) {
   renderCurrentWeather(current)
